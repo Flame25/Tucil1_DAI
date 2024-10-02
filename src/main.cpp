@@ -1,6 +1,8 @@
-#include "steep_ascent.hpp"
 #include <cube.hpp>
 #include <open_gl_utils.hpp>
+#include <random_restart.hpp>
+#include <side_ways.hpp>
+#include <steep_ascent.hpp>
 
 int main(int argc, char **argv) {
   std::srand(
@@ -23,8 +25,9 @@ int main(int argc, char **argv) {
       open_gl_utils::mouseButton); // Register mouse button event handler
   glutMotionFunc(
       open_gl_utils::mouseMotion); // Register mouse motion event handler
-  std::thread cubeUpdater(steep_ascent::hill_climbing); // Different thread for
-  // updating cube
+  std::thread cubeUpdater(random_restart::hill_climbing); // Different thread
+  // for
+  //  updating cube
 
   // Enter the main loop
   glutMainLoop();

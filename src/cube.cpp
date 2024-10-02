@@ -27,6 +27,7 @@ void cube::displayCube() {
 
 // Initialize the cube with unique and random values (1 to N^5)
 void cube::initCube(std::unordered_set<int> existingValues) {
+  int count = 1;
   for (int i = 0; i < N; ++i) {
     for (int j = 0; j < N; ++j) {
       for (int k = 0; k < N; ++k) {
@@ -42,6 +43,7 @@ void cube::initCube(std::unordered_set<int> existingValues) {
 
         // Assign the unique value to the cube at position (i, j, k)
         cube[i][j][k] = randomValue;
+        count++;
       }
     }
   }
@@ -57,6 +59,7 @@ void cube::resetSums(std::vector<int> &sums) {
 int cube::calculate(const std::vector<int> &sums, int target) {
   int total_diff = 0;
   for (int sum : sums) {
+    // std::cout << sum << std::endl;
     if (sum != 0)
       total_diff += (sum != 315);
   }
@@ -86,8 +89,8 @@ int cube::objective_func() {
   for (int i = 0; i < cube::N; i++) {
     sums[0] = cube[i][i][i];
     sums[1] = cube[5 - i][i][i];
-    sums[2] = cube[5 - i][5 - i][5 - i];
-    sums[3] = cube[i][5 - i][5 - i];
+    sums[2] = cube[5 - i][i][5 - i];
+    sums[3] = cube[i][i][5 - i];
   }
   total_sum += calculate(sums, target_sum);
   resetSums(sums);
@@ -98,9 +101,9 @@ int cube::objective_func() {
       sums[0] += cube[i][j][j];
       sums[1] += cube[j][i][j];
       sums[2] += cube[j][j][i];
-      sums[3] += cube[5 - j][5 - j][i];
-      sums[4] += cube[i][5 - j][5 - j];
-      sums[5] += cube[5 - j][i][5 - j];
+      sums[3] += cube[5 - j][j][i];
+      sums[4] += cube[i][j][5 - j];
+      sums[5] += cube[5 - j][i][j];
     }
     total_sum += calculate(sums, target_sum);
     resetSums(sums);
@@ -115,62 +118,12 @@ void cube::swap(int x1, int y1, int z1, int x2, int y2, int z2) {
   cube::cube[x2][y2][z2] = temp;
 }
 
-// Min Val special for errInfo only based on error
-cube::errInfo cube::minVal(std::vector<cube::errInfo> vec) {
-  errInfo minVal;
-  minVal.error = INT_MAX;
-  minVal.x = 9999;
-  minVal.y = 9999;
-  minVal.z = 9999;
-  for (int i = 0; i < vec.size(); i++) {
-    if (minVal.error > vec[i].error) {
-      minVal = vec[i];
-    }
-  }
-  return minVal;
-}
-
 // Implement by check all the possible movement first
 // Then, check the lowest error and change cube to that position
 cube::errInfo cube::swap_cube(int x, int y, int z) {
   std::vector<cube::errInfo> error_list;
-  // for (int i = 0; i < cube::N; i++) {
 
-  //   // For Z axis only
-  //   swap(x, y, z, i, y, z);
-  //   cube::errInfo noted_error;
-  //   noted_error.error = objective_func();
-  //   noted_error.x = i;
-  //   noted_error.y = y;
-  //   noted_error.z = z;
-
-  //   error_list.insert(error_list.begin(), noted_error);
-
-  //   // Revert back condition
-  //   swap(x, y, z, i, y, z);
-
-  //   // For Y Axis Only
-  //   swap(x, y, z, x, i, z);
-  //   noted_error.error = objective_func();
-  //   noted_error.x = x;
-  //   noted_error.y = i;
-  //   noted_error.z = z;
-
-  //   error_list.insert(error_list.begin(), noted_error);
-
-  //   swap(x, y, z, x, i, z);
-
-  //   // For Z Axis only
-  //   swap(x, y, z, x, y, i);
-  //   noted_error.error = objective_func();
-  //   noted_error.x = x;
-  //   noted_error.y = y;
-  //   noted_error.z = i;
-
-  //   error_list.insert(error_list.begin(), noted_error);
-
-  //   swap(x, y, z, x, y, i);
-  // }
+  cube::errInfo noted_error;
 
   // Try All Possible Places
   for (int i = 0; i < N; i++) {
@@ -178,17 +131,16 @@ cube::errInfo cube::swap_cube(int x, int y, int z) {
       for (int k = 0; k < N; k++) {
 
         swap(x, y, z, i, j, k);
-        cube::errInfo noted_error;
-        noted_error.error = objective_func();
-        noted_error.x = i;
-        noted_error.y = j;
-        noted_error.z = k;
-
-        error_list.insert(error_list.begin(), noted_error);
-
+        int test_error = objective_func();
+        if (noted_error.error > test_error) {
+          noted_error.error = test_error;
+          noted_error.x = i;
+          noted_error.y = j;
+          noted_error.z = k;
+        }
         swap(x, y, z, i, j, k);
       }
     }
   }
-  return minVal(error_list);
+  return noted_error;
 }

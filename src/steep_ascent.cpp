@@ -2,36 +2,45 @@
 #include <steep_ascent.hpp>
 
 void steep_ascent::hill_climbing() {
-  bool found = false;
-  int currentErr = cube::objective_func();
 
-  cube::errInfo minVal;
-  minVal.error = INT_MAX;
-  minVal.x = 9999;
-  minVal.y = 9999;
-  minVal.z = 9999;
+  while (true) {
 
-  // Loop trough all elements until finish condition satisfied
-  for (int i = 0; i < cube::N; i++) {
-    for (int j = 0; j < cube::N; j++) {
-      for (int k = 0; k < cube::N; k++) {
-        // For each elements
-        // Count the error after swapping, then find the smallest one
-        cube::errInfo error_note = cube::swap_cube(i, j, k);
-        std::cout << error_note.error << " " << std::endl;
-        if (minVal.error > error_note.error) {
-          minVal = error_note;
-          cube::swap(i, j, k, minVal.x, minVal.y, minVal.z);
-          std::cout << "Swapped" << std::endl;
-          std::cout << "Current Err : " << minVal.error << "/"
-                    << cube::objective_func() << std::endl;
-        }
+    cube::errInfo neighbor;
+    cube::errInfo targetVal;
 
-        else if (minVal.error <= error_note.error) {
-          std::cout << "====Steepest Ascent Finished ====" << std::endl;
-          return;
+    int currentErr = cube::objective_func();
+    // Loop trough all elements until finish condition satisfied
+    for (int i = 0; i < cube::N; i++) {
+      for (int j = 0; j < cube::N; j++) {
+        for (int k = 0; k < cube::N; k++) {
+          // For each elements
+          // Count the error after swapping, then find the smallest one
+          cube::errInfo temp = cube::swap_cube(i, j, k);
+          if (neighbor.error > temp.error) {
+            neighbor.error = temp.error;
+            neighbor.x = temp.x;
+            neighbor.y = temp.y;
+            neighbor.z = temp.z;
+
+            // Which Element to be swapped
+            targetVal.x = i;
+            targetVal.y = j;
+            targetVal.z = k;
+          }
         }
       }
+    }
+
+    if (neighbor.error < currentErr) {
+      std::cout << "Swapped" << std::endl;
+      cube::swap(targetVal.x, targetVal.y, targetVal.z, neighbor.x, neighbor.y,
+                 neighbor.z);
+      std::cout << "Current Err : " << neighbor.error << std::endl;
+    }
+
+    if (currentErr <= neighbor.error) {
+      std::cout << "====Steepest Ascent Finished ====" << std::endl;
+      return;
     }
   }
 }

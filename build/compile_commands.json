@@ -18,5 +18,15 @@
   "directory": "/home/docker/Documents/tucil_dai/build",
   "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/cube.cpp.o -c /home/docker/Documents/tucil_dai/src/cube.cpp",
   "file": "/home/docker/Documents/tucil_dai/src/cube.cpp"
+},
+{
+  "directory": "/home/docker/Documents/tucil_dai/build",
+  "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/side_ways.cpp.o -c /home/docker/Documents/tucil_dai/src/side_ways.cpp",
+  "file": "/home/docker/Documents/tucil_dai/src/side_ways.cpp"
+},
+{
+  "directory": "/home/docker/Documents/tucil_dai/build",
+  "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/random_restart.cpp.o -c /home/docker/Documents/tucil_dai/src/random_restart.cpp",
+  "file": "/home/docker/Documents/tucil_dai/src/random_restart.cpp"
 }
 ]

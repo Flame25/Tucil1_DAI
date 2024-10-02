@@ -7,12 +7,22 @@ CMakeFiles/cube.dir/src/cube.cpp.o
 CMakeFiles/cube.dir/src/main.cpp.o
  ../include/cube.hpp
  ../include/open_gl_utils.hpp
+ ../include/random_restart.hpp
+ ../include/side_ways.hpp
  ../include/steep_ascent.hpp
  /home/docker/Documents/tucil_dai/src/main.cpp
 CMakeFiles/cube.dir/src/open_gl_utils.cpp.o
  ../include/cube.hpp
  ../include/open_gl_utils.hpp
  /home/docker/Documents/tucil_dai/src/open_gl_utils.cpp
+CMakeFiles/cube.dir/src/random_restart.cpp.o
+ ../include/cube.hpp
+ ../include/random_restart.hpp
+ /home/docker/Documents/tucil_dai/src/random_restart.cpp
+CMakeFiles/cube.dir/src/side_ways.cpp.o
+ ../include/cube.hpp
+ ../include/side_ways.hpp
+ /home/docker/Documents/tucil_dai/src/side_ways.cpp
 CMakeFiles/cube.dir/src/steep_ascent.cpp.o
  ../include/cube.hpp
  ../include/steep_ascent.hpp

@@ -1,3 +1,4 @@
+#include "cube.hpp"
 #include <open_gl_utils.hpp>
 
 float angleX = 0.0f,
@@ -15,35 +16,13 @@ void open_gl_utils::renderText(float x, float y, float z,
   }
 }
 
-// Initialize the cube with unique and random values (1 to N^5)
-void open_gl_utils::initCube(std::unordered_set<int> existingValues) {
-  for (int i = 0; i < cube::N; ++i) {
-    for (int j = 0; j < cube::N; ++j) {
-      for (int k = 0; k < cube::N; ++k) {
-        int randomValue;
-        do {
-          randomValue =
-              rand() % 125 + 1; // Generates a number between 1 and 125
-        } while (existingValues.find(randomValue) !=
-                 existingValues.end()); // Ensure uniqueness
-
-        // Add the value to the set of existing values
-        existingValues.insert(randomValue);
-
-        // Assign the unique value to the cube at position (i, j, k)
-        cube::cube[i][j][k] = randomValue;
-      }
-    }
-  }
-  cube::displayCube();
-}
-
 // Initialize OpenGL settings
 void open_gl_utils::init() {
   glClearColor(0.0, 0.0, 0.0, 1.0); // Black background
   glEnable(GL_DEPTH_TEST);          // Enable depth testing
   std::unordered_set<int> existingValues;
-  initCube(existingValues); // Initialize the cube
+  cube::initCube(existingValues); // Initialize the cube
+  cube::displayCube();
 }
 
 // Display function to render the cube

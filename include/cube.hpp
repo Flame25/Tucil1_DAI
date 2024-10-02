@@ -12,8 +12,8 @@
 namespace cube {
 
 struct errInfo {
-  int error = 0;
-  int x, y, z;
+  int error = 9999;
+  int x = 9999, y = 9999, z = 9999;
 };
 const int num_neighbors = 10; // Number of neighbors to generate
 const int N = 5;              // Cube size (5x5x5)
@@ -35,9 +35,6 @@ void swap(int x1, int y1, int z1, int x2, int y2, int z2);
 // Works by check all possible condition which one is the best
 // All possible condition = Horizontal, Vertical, Pillar Axis Movement
 errInfo swap_cube(int x, int y, int z);
-
-// Min Value getter special for errInfo based on Error Only
-errInfo minVal(std::vector<errInfo> vec);
 
 // Helper function to add absolute differences from 315 to total_sum
 int calculate(const std::vector<int> &sums, int target);

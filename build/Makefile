@@ -204,6 +204,60 @@ src/open_gl_utils.cpp.s:
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/open_gl_utils.cpp.s
 .PHONY : src/open_gl_utils.cpp.s
 
+src/random_restart.o: src/random_restart.cpp.o
+
+.PHONY : src/random_restart.o
+
+# target to build an object file
+src/random_restart.cpp.o:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/random_restart.cpp.o
+.PHONY : src/random_restart.cpp.o
+
+src/random_restart.i: src/random_restart.cpp.i
+
+.PHONY : src/random_restart.i
+
+# target to preprocess a source file
+src/random_restart.cpp.i:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/random_restart.cpp.i
+.PHONY : src/random_restart.cpp.i
+
+src/random_restart.s: src/random_restart.cpp.s
+
+.PHONY : src/random_restart.s
+
+# target to generate assembly for a file
+src/random_restart.cpp.s:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/random_restart.cpp.s
+.PHONY : src/random_restart.cpp.s
+
+src/side_ways.o: src/side_ways.cpp.o
+
+.PHONY : src/side_ways.o
+
+# target to build an object file
+src/side_ways.cpp.o:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/side_ways.cpp.o
+.PHONY : src/side_ways.cpp.o
+
+src/side_ways.i: src/side_ways.cpp.i
+
+.PHONY : src/side_ways.i
+
+# target to preprocess a source file
+src/side_ways.cpp.i:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/side_ways.cpp.i
+.PHONY : src/side_ways.cpp.i
+
+src/side_ways.s: src/side_ways.cpp.s
+
+.PHONY : src/side_ways.s
+
+# target to generate assembly for a file
+src/side_ways.cpp.s:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/side_ways.cpp.s
+.PHONY : src/side_ways.cpp.s
+
 src/steep_ascent.o: src/steep_ascent.cpp.o
 
 .PHONY : src/steep_ascent.o
@@ -249,6 +303,12 @@ help:
 	@echo "... src/open_gl_utils.o"
 	@echo "... src/open_gl_utils.i"
 	@echo "... src/open_gl_utils.s"
+	@echo "... src/random_restart.o"
+	@echo "... src/random_restart.i"
+	@echo "... src/random_restart.s"
+	@echo "... src/side_ways.o"
+	@echo "... src/side_ways.i"
+	@echo "... src/side_ways.s"
 	@echo "... src/steep_ascent.o"
 	@echo "... src/steep_ascent.i"
 	@echo "... src/steep_ascent.s"

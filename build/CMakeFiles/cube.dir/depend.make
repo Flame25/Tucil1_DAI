@@ -6,12 +6,22 @@ CMakeFiles/cube.dir/src/cube.cpp.o: ../src/cube.cpp
 
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/cube.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/open_gl_utils.hpp
+CMakeFiles/cube.dir/src/main.cpp.o: ../include/random_restart.hpp
+CMakeFiles/cube.dir/src/main.cpp.o: ../include/side_ways.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/steep_ascent.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../src/main.cpp
 
 CMakeFiles/cube.dir/src/open_gl_utils.cpp.o: ../include/cube.hpp
 CMakeFiles/cube.dir/src/open_gl_utils.cpp.o: ../include/open_gl_utils.hpp
 CMakeFiles/cube.dir/src/open_gl_utils.cpp.o: ../src/open_gl_utils.cpp
+
+CMakeFiles/cube.dir/src/random_restart.cpp.o: ../include/cube.hpp
+CMakeFiles/cube.dir/src/random_restart.cpp.o: ../include/random_restart.hpp
+CMakeFiles/cube.dir/src/random_restart.cpp.o: ../src/random_restart.cpp
+
+CMakeFiles/cube.dir/src/side_ways.cpp.o: ../include/cube.hpp
+CMakeFiles/cube.dir/src/side_ways.cpp.o: ../include/side_ways.hpp
+CMakeFiles/cube.dir/src/side_ways.cpp.o: ../src/side_ways.cpp
 
 CMakeFiles/cube.dir/src/steep_ascent.cpp.o: ../include/cube.hpp
 CMakeFiles/cube.dir/src/steep_ascent.cpp.o: ../include/steep_ascent.hpp
