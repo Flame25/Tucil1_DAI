@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/docker/Documents/tucil_dai/build",
+  "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/main.cpp.o -c /home/docker/Documents/tucil_dai/src/main.cpp",
+  "file": "/home/docker/Documents/tucil_dai/src/main.cpp"
+},
+{
+  "directory": "/home/docker/Documents/tucil_dai/build",
+  "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/open_gl_utils.cpp.o -c /home/docker/Documents/tucil_dai/src/open_gl_utils.cpp",
+  "file": "/home/docker/Documents/tucil_dai/src/open_gl_utils.cpp"
+},
+{
+  "directory": "/home/docker/Documents/tucil_dai/build",
+  "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/steep_ascent.cpp.o -c /home/docker/Documents/tucil_dai/src/steep_ascent.cpp",
+  "file": "/home/docker/Documents/tucil_dai/src/steep_ascent.cpp"
+},
+{
+  "directory": "/home/docker/Documents/tucil_dai/build",
+  "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/cube.cpp.o -c /home/docker/Documents/tucil_dai/src/cube.cpp",
+  "file": "/home/docker/Documents/tucil_dai/src/cube.cpp"
+}
+]

@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/cube.dir/src/main.cpp.o CMakeFiles/cube.dir/src/open_gl_utils.cpp.o CMakeFiles/cube.dir/src/steep_ascent.cpp.o CMakeFiles/cube.dir/src/cube.cpp.o  -o cube  /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/x86_64-linux-gnu/libglut.so /usr/lib/x86_64-linux-gnu/libXmu.so /usr/lib/x86_64-linux-gnu/libXi.so -lpthread 

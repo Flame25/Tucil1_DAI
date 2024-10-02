@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/cube.hpp
+climits
+-
+iostream
+-
+sstream
+-
+string
+-
+thread
+-
+unordered_set
+-
+vector
+-
+
+../include/steep_ascent.hpp
+cube.hpp
+-
+
+/home/docker/Documents/tucil_dai/src/cube.cpp
+climits
+-
+cstdlib
+-
+cube.hpp
+-
+ostream
+-
+vector
+-
+
+/home/docker/Documents/tucil_dai/src/steep_ascent.cpp
+cube.hpp
+/home/docker/Documents/tucil_dai/src/cube.hpp
+steep_ascent.hpp
+-
+

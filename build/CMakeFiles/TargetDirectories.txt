@@ -1,0 +1,3 @@
+/home/docker/Documents/tucil_dai/build/CMakeFiles/rebuild_cache.dir
+/home/docker/Documents/tucil_dai/build/CMakeFiles/edit_cache.dir
+/home/docker/Documents/tucil_dai/build/CMakeFiles/cube.dir
