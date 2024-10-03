@@ -32,10 +32,10 @@ void steep_ascent::hill_climbing() {
     }
 
     if (neighbor.error < currentErr) {
-      std::cout << "Swapped" << std::endl;
+      // std::cout << "Swapped" << std::endl;
       cube::swap(targetVal.x, targetVal.y, targetVal.z, neighbor.x, neighbor.y,
                  neighbor.z);
-      std::cout << "Current Err : " << neighbor.error << std::endl;
+      // std::cout << "Current Err : " << neighbor.error << std::endl;
     }
 
     if (currentErr <= neighbor.error) {

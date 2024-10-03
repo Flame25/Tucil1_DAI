@@ -7,7 +7,7 @@
 
 int population_num = 2;
 int N = 5;
-double MUTATION_PROB = 0.05;
+double MUTATION_PROB = 0.20;
 // Function to perform Cycle Crossover on a 2D array (one layer of the 3D array)
 void genetic_algorithm::cycleCrossover2D(int parent1Layer[cube::N][cube::N],
                                          int parent2Layer[cube::N][cube::N],
@@ -112,7 +112,7 @@ void genetic_algorithm::work_func() {
 
   // Start main looping
   // Do roullete n times, cross over
-  for (int i = 0; i < 1000000; i++) {
+  for (int i = 0; i < 10000; i++) {
 
     int probabilities[population_num];
     int all_score[population_num];
@@ -175,12 +175,12 @@ void genetic_algorithm::work_func() {
 
   individual smallestOne;
   smallestOne.fitness = 9999;
-  std::cout << "Current Err :" << cube::objective_func() << std::endl;
+  // std::cout << "Current Err :" << cube::objective_func() << std::endl;
   for (individual i : population) {
     if (i.fitness < smallestOne.fitness) {
       smallestOne = i;
     }
   }
 
-  std::cout << "New Err :" << smallestOne.fitness << std::endl;
+  // std::cout << "New Err :" << smallestOne.fitness << std::endl;
 }

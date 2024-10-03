@@ -22,21 +22,15 @@ unordered_set
 vector
 -
 
-../include/genetic_algorithm.hpp
+../include/stochastic.hpp
 cube.hpp
 -
 
-/home/docker/Documents/tucil_dai/src/genetic_algorithm.cpp
+/home/docker/Documents/tucil_dai/src/stochastic.cpp
 cube.hpp
 /home/docker/Documents/tucil_dai/src/cube.hpp
-algorithm
--
 cstdlib
 -
-genetic_algorithm.hpp
--
-set
--
-vector
+stochastic.hpp
 -
 

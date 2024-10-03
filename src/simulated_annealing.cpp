@@ -16,7 +16,7 @@ void simulated_annealing::work_func() {
     bool improved = false;
     cube::errInfo target;
     // Choose best candidate between all candidates
-    for (int r = 0; r < 50; r++) {
+    for (int r = 0; r < 1000; r++) {
       //  Generate a random number between 0 and 124
       int i_1 = std::rand() % 5; // 125 gives a range of 0-124
       int j_1 = std::rand() % 5;
@@ -53,8 +53,8 @@ void simulated_annealing::work_func() {
       cube::swap(bestData.x, bestData.y, bestData.z, target.x, target.y,
                  target.z);
     } else if (ap > (double)rand() / RAND_MAX) {
-      std::cout << "Bad Selected : " << currentErr << "/" << bestData.error
-                << std::endl;
+      // std::cout << "Bad Selected : " << currentErr << "/" << bestData.error
+      //<< std::endl;
       cube::swap(bestData.x, bestData.y, bestData.z, target.x, target.y,
                  target.z);
     }

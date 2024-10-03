@@ -45,10 +45,10 @@ void random_restart::hill_climbing() {
       }
 
       if (neighbor.error < currentErr) {
-        std::cout << "Swapped" << std::endl;
+        // std::cout << "Swapped" << std::endl;
         cube::swap(targetVal.x, targetVal.y, targetVal.z, neighbor.x,
                    neighbor.y, neighbor.z);
-        std::cout << "Current Err : " << neighbor.error << std::endl;
+        // std::cout << "Current Err : " << neighbor.error << std::endl;
       }
 
       if (currentErr <= neighbor.error) {
@@ -67,9 +67,9 @@ void random_restart::hill_climbing() {
 
   cube::copyCube(bestCube, cube::cube);
 
-  for (int r = 0; r < numOfRestart; r++) {
-    std::cout << "Score " << r << " :" << noteScore[r] << std::endl;
-  }
-  std::cout << "Now Score :" << cube::objective_func() << std::endl;
-  std::cout << "===== Random Restart Done =====" << std::endl;
+  // for (int r = 0; r < numOfRestart; r++) {
+  //   //std::cout << "Score " << r << " :" << noteScore[r] << std::endl;
+  // }
+  // std::cout << "Now Score :" << cube::objective_func() << std::endl;
+  // std::cout << "===== Random Restart Done =====" << std::endl;
 }

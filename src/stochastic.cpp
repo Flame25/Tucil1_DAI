@@ -12,7 +12,7 @@ void stochastic::random_swap() {
   bestData.error = cube::objective_func();
   bool improved = false;
   cube::errInfo target;
-  for (int r = 0; r < 10; r++) {
+  for (int r = 0; r < 100; r++) {
     //  Generate a random number between 0 and 124
     int i_1 = std::rand() % 5; // 125 gives a range of 0-124
     int j_1 = std::rand() % 5;
