@@ -4,8 +4,13 @@
 CMakeFiles/cube.dir/src/cube.cpp.o
  ../include/cube.hpp
  /home/docker/Documents/tucil_dai/src/cube.cpp
+CMakeFiles/cube.dir/src/genetic_algorithm.cpp.o
+ ../include/cube.hpp
+ ../include/genetic_algorithm.hpp
+ /home/docker/Documents/tucil_dai/src/genetic_algorithm.cpp
 CMakeFiles/cube.dir/src/main.cpp.o
  ../include/cube.hpp
+ ../include/genetic_algorithm.hpp
  ../include/open_gl_utils.hpp
  ../include/random_restart.hpp
  ../include/side_ways.hpp

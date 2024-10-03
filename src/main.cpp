@@ -1,6 +1,7 @@
 #include "simulated_annealing.hpp"
 #include "stochastic.hpp"
 #include <cube.hpp>
+#include <genetic_algorithm.hpp>
 #include <open_gl_utils.hpp>
 #include <random_restart.hpp>
 #include <side_ways.hpp>
@@ -27,7 +28,7 @@ int main(int argc, char **argv) {
       open_gl_utils::mouseButton); // Register mouse button event handler
   glutMotionFunc(
       open_gl_utils::mouseMotion); // Register mouse motion event handler
-  std::thread cubeUpdater(simulated_annealing::work_func); // Different thread
+  std::thread cubeUpdater(genetic_algorithm::work_func); // Different thread
   // for
   //  updating cube
 

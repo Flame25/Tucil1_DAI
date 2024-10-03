@@ -6,23 +6,6 @@ int random_restart::numOfRestart = 0;
 
 void random_restart::setRestartNum(int n) { random_restart::numOfRestart = n; }
 
-void random_restart::copyCube(int (*first)[5][5], int (*target)[5][5]) {
-
-  std::cout << "Copying Cube" << std::endl;
-  for (int i = 0; i < cube::N; i++) {
-    for (int j = 0; j < cube::N; j++) {
-      for (int k = 0; k < cube::N; k++) {
-        target[i][j][k] = first[i][j][k];
-      }
-    }
-  }
-}
-
-void random_restart::restart_cube() {
-  std::unordered_set<int> existingValues;
-  cube::initCube(existingValues);
-}
-
 void random_restart::hill_climbing() {
 
   // Set restart to 2
@@ -77,12 +60,12 @@ void random_restart::hill_climbing() {
     noteScore[r] = cube::objective_func();
     if (bestCubeErr > noteScore[r]) {
       bestCubeErr = noteScore[r];
-      copyCube(cube::cube, bestCube);
+      cube::copyCube(cube::cube, bestCube);
     }
-    restart_cube();
+    cube::restart_cube();
   }
 
-  copyCube(bestCube, cube::cube);
+  cube::copyCube(bestCube, cube::cube);
 
   for (int r = 0; r < numOfRestart; r++) {
     std::cout << "Score " << r << " :" << noteScore[r] << std::endl;

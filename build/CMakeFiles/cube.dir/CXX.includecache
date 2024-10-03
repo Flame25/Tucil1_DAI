@@ -22,15 +22,21 @@ unordered_set
 vector
 -
 
-../include/simulated_annealing.hpp
+../include/genetic_algorithm.hpp
 cube.hpp
 -
 
-/home/docker/Documents/tucil_dai/src/simulated_annealing.cpp
+/home/docker/Documents/tucil_dai/src/genetic_algorithm.cpp
 cube.hpp
 /home/docker/Documents/tucil_dai/src/cube.hpp
-cmath
+algorithm
 -
-simulated_annealing.hpp
+cstdlib
+-
+genetic_algorithm.hpp
+-
+set
+-
+vector
 -
 

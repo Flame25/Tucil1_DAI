@@ -4,7 +4,12 @@
 CMakeFiles/cube.dir/src/cube.cpp.o: ../include/cube.hpp
 CMakeFiles/cube.dir/src/cube.cpp.o: ../src/cube.cpp
 
+CMakeFiles/cube.dir/src/genetic_algorithm.cpp.o: ../include/cube.hpp
+CMakeFiles/cube.dir/src/genetic_algorithm.cpp.o: ../include/genetic_algorithm.hpp
+CMakeFiles/cube.dir/src/genetic_algorithm.cpp.o: ../src/genetic_algorithm.cpp
+
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/cube.hpp
+CMakeFiles/cube.dir/src/main.cpp.o: ../include/genetic_algorithm.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/open_gl_utils.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/random_restart.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/side_ways.hpp

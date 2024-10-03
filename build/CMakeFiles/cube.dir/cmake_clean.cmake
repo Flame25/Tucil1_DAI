@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cube.dir/src/cube.cpp.o"
+  "CMakeFiles/cube.dir/src/genetic_algorithm.cpp.o"
   "CMakeFiles/cube.dir/src/main.cpp.o"
   "CMakeFiles/cube.dir/src/open_gl_utils.cpp.o"
   "CMakeFiles/cube.dir/src/random_restart.cpp.o"

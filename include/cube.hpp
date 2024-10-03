@@ -42,6 +42,14 @@ int calculate(const std::vector<int> &sums, int target);
 // Helper function to reset sums to zero
 void resetSums(std::vector<int> &sums);
 
+// Copy Cube function
+void copyCube(int first[cube::N][cube::N][cube::N],
+              int target[cube::N][cube::N][cube::N]);
+
+// Re-initialized cube with random value
+void restart_cube();
+
+int objective_func(int cube[cube::N][cube::N][cube::N]);
 } // namespace cube
 
 #endif

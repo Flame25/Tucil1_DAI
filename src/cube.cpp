@@ -67,6 +67,52 @@ int cube::calculate(const std::vector<int> &sums, int target) {
 }
 
 // Cube Objective Function
+int cube::objective_func(int cube[cube::N][cube::N][cube::N]) {
+  int total_sum = 0;
+  std::vector<int> sums(6, 0); // For storing sum1 to sum6
+  const int target_sum = 315;
+
+  // Horizontal, Vertical, Pillar
+  for (int i = 0; i < cube::N; i++) {
+    for (int j = 0; j < cube::N; j++) {
+      for (int k = 0; k < cube::N; k++) {
+        sums[0] += cube[i][j][k];
+        sums[1] += cube[k][i][j];
+        sums[2] += cube[i][k][j];
+      }
+      total_sum += calculate(sums, target_sum);
+      resetSums(sums);
+    }
+  }
+
+  // Space Diagonal
+  for (int i = 0; i < cube::N; i++) {
+    sums[0] = cube[i][i][i];
+    sums[1] = cube[5 - i][i][i];
+    sums[2] = cube[5 - i][i][5 - i];
+    sums[3] = cube[i][i][5 - i];
+  }
+  total_sum += calculate(sums, target_sum);
+  resetSums(sums);
+
+  // Plane Diagonal
+  for (int i = 0; i < cube::N; i++) {
+    for (int j = 0; j < cube::N; j++) {
+      sums[0] += cube[i][j][j];
+      sums[1] += cube[j][i][j];
+      sums[2] += cube[j][j][i];
+      sums[3] += cube[5 - j][j][i];
+      sums[4] += cube[i][j][5 - j];
+      sums[5] += cube[5 - j][i][j];
+    }
+    total_sum += calculate(sums, target_sum);
+    resetSums(sums);
+  }
+
+  return total_sum;
+}
+
+// Cube Objective Function
 int cube::objective_func() {
   int total_sum = 0;
   std::vector<int> sums(6, 0); // For storing sum1 to sum6
@@ -145,4 +191,22 @@ cube::errInfo cube::swap_cube(int x, int y, int z) {
     }
   }
   return noted_error;
+}
+
+// Copy one cube to another
+void cube::copyCube(int (*first)[5][5], int (*target)[5][5]) {
+
+  std::cout << "Copying Cube" << std::endl;
+  for (int i = 0; i < cube::N; i++) {
+    for (int j = 0; j < cube::N; j++) {
+      for (int k = 0; k < cube::N; k++) {
+        target[i][j][k] = first[i][j][k];
+      }
+    }
+  }
+}
+
+void cube::restart_cube() {
+  std::unordered_set<int> existingValues;
+  cube::initCube(existingValues);
 }
