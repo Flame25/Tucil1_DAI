@@ -28,5 +28,15 @@
   "directory": "/home/docker/Documents/tucil_dai/build",
   "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/random_restart.cpp.o -c /home/docker/Documents/tucil_dai/src/random_restart.cpp",
   "file": "/home/docker/Documents/tucil_dai/src/random_restart.cpp"
+},
+{
+  "directory": "/home/docker/Documents/tucil_dai/build",
+  "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/stochastic.cpp.o -c /home/docker/Documents/tucil_dai/src/stochastic.cpp",
+  "file": "/home/docker/Documents/tucil_dai/src/stochastic.cpp"
+},
+{
+  "directory": "/home/docker/Documents/tucil_dai/build",
+  "command": "/usr/bin/c++   -I/home/docker/Documents/tucil_dai/include    -std=gnu++17 -o CMakeFiles/cube.dir/src/simulated_annealing.cpp.o -c /home/docker/Documents/tucil_dai/src/simulated_annealing.cpp",
+  "file": "/home/docker/Documents/tucil_dai/src/simulated_annealing.cpp"
 }
 ]

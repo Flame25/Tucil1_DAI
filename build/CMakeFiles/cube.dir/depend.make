@@ -8,7 +8,9 @@ CMakeFiles/cube.dir/src/main.cpp.o: ../include/cube.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/open_gl_utils.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/random_restart.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/side_ways.hpp
+CMakeFiles/cube.dir/src/main.cpp.o: ../include/simulated_annealing.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../include/steep_ascent.hpp
+CMakeFiles/cube.dir/src/main.cpp.o: ../include/stochastic.hpp
 CMakeFiles/cube.dir/src/main.cpp.o: ../src/main.cpp
 
 CMakeFiles/cube.dir/src/open_gl_utils.cpp.o: ../include/cube.hpp
@@ -23,7 +25,15 @@ CMakeFiles/cube.dir/src/side_ways.cpp.o: ../include/cube.hpp
 CMakeFiles/cube.dir/src/side_ways.cpp.o: ../include/side_ways.hpp
 CMakeFiles/cube.dir/src/side_ways.cpp.o: ../src/side_ways.cpp
 
+CMakeFiles/cube.dir/src/simulated_annealing.cpp.o: ../include/cube.hpp
+CMakeFiles/cube.dir/src/simulated_annealing.cpp.o: ../include/simulated_annealing.hpp
+CMakeFiles/cube.dir/src/simulated_annealing.cpp.o: ../src/simulated_annealing.cpp
+
 CMakeFiles/cube.dir/src/steep_ascent.cpp.o: ../include/cube.hpp
 CMakeFiles/cube.dir/src/steep_ascent.cpp.o: ../include/steep_ascent.hpp
 CMakeFiles/cube.dir/src/steep_ascent.cpp.o: ../src/steep_ascent.cpp
+
+CMakeFiles/cube.dir/src/stochastic.cpp.o: ../include/cube.hpp
+CMakeFiles/cube.dir/src/stochastic.cpp.o: ../include/stochastic.hpp
+CMakeFiles/cube.dir/src/stochastic.cpp.o: ../src/stochastic.cpp
 

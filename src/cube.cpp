@@ -113,6 +113,8 @@ int cube::objective_func() {
 }
 
 void cube::swap(int x1, int y1, int z1, int x2, int y2, int z2) {
+  // std::cout << x1 << " " << y1 << " " << z1 << " " << x2 << " " << y2 << " "
+  //<< z2 << std::endl;
   int temp = cube::cube[x1][y1][z1];
   cube::cube[x1][y1][z1] = cube::cube[x2][y2][z2];
   cube::cube[x2][y2][z2] = temp;

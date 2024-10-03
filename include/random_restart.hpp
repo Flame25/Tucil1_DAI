@@ -1,3 +1,5 @@
+#ifndef random_restart_hpp
+#define random_restart_hpp
 #include <cube.hpp>
 
 namespace random_restart {
@@ -13,3 +15,5 @@ void copyCube(int first[cube::N][cube::N][cube::N],
               int target[cube::N][cube::N][cube::N]);
 
 } // namespace random_restart
+
+#endif

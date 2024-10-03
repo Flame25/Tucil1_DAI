@@ -22,27 +22,15 @@ unordered_set
 vector
 -
 
-../include/random_restart.hpp
+../include/simulated_annealing.hpp
 cube.hpp
 -
 
-/home/docker/Documents/tucil_dai/src/cube.cpp
-climits
--
-cstdlib
--
-cube.hpp
--
-ostream
--
-vector
--
-
-/home/docker/Documents/tucil_dai/src/random_restart.cpp
+/home/docker/Documents/tucil_dai/src/simulated_annealing.cpp
 cube.hpp
 /home/docker/Documents/tucil_dai/src/cube.hpp
-random_restart.hpp
+cmath
 -
-unordered_set
+simulated_annealing.hpp
 -
 

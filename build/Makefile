@@ -258,6 +258,33 @@ src/side_ways.cpp.s:
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/side_ways.cpp.s
 .PHONY : src/side_ways.cpp.s
 
+src/simulated_annealing.o: src/simulated_annealing.cpp.o
+
+.PHONY : src/simulated_annealing.o
+
+# target to build an object file
+src/simulated_annealing.cpp.o:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/simulated_annealing.cpp.o
+.PHONY : src/simulated_annealing.cpp.o
+
+src/simulated_annealing.i: src/simulated_annealing.cpp.i
+
+.PHONY : src/simulated_annealing.i
+
+# target to preprocess a source file
+src/simulated_annealing.cpp.i:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/simulated_annealing.cpp.i
+.PHONY : src/simulated_annealing.cpp.i
+
+src/simulated_annealing.s: src/simulated_annealing.cpp.s
+
+.PHONY : src/simulated_annealing.s
+
+# target to generate assembly for a file
+src/simulated_annealing.cpp.s:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/simulated_annealing.cpp.s
+.PHONY : src/simulated_annealing.cpp.s
+
 src/steep_ascent.o: src/steep_ascent.cpp.o
 
 .PHONY : src/steep_ascent.o
@@ -285,6 +312,33 @@ src/steep_ascent.cpp.s:
 	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/steep_ascent.cpp.s
 .PHONY : src/steep_ascent.cpp.s
 
+src/stochastic.o: src/stochastic.cpp.o
+
+.PHONY : src/stochastic.o
+
+# target to build an object file
+src/stochastic.cpp.o:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/stochastic.cpp.o
+.PHONY : src/stochastic.cpp.o
+
+src/stochastic.i: src/stochastic.cpp.i
+
+.PHONY : src/stochastic.i
+
+# target to preprocess a source file
+src/stochastic.cpp.i:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/stochastic.cpp.i
+.PHONY : src/stochastic.cpp.i
+
+src/stochastic.s: src/stochastic.cpp.s
+
+.PHONY : src/stochastic.s
+
+# target to generate assembly for a file
+src/stochastic.cpp.s:
+	$(MAKE) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/src/stochastic.cpp.s
+.PHONY : src/stochastic.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -309,9 +363,15 @@ help:
 	@echo "... src/side_ways.o"
 	@echo "... src/side_ways.i"
 	@echo "... src/side_ways.s"
+	@echo "... src/simulated_annealing.o"
+	@echo "... src/simulated_annealing.i"
+	@echo "... src/simulated_annealing.s"
 	@echo "... src/steep_ascent.o"
 	@echo "... src/steep_ascent.i"
 	@echo "... src/steep_ascent.s"
+	@echo "... src/stochastic.o"
+	@echo "... src/stochastic.i"
+	@echo "... src/stochastic.s"
 .PHONY : help
 
 

@@ -9,7 +9,9 @@ CMakeFiles/cube.dir/src/main.cpp.o
  ../include/open_gl_utils.hpp
  ../include/random_restart.hpp
  ../include/side_ways.hpp
+ ../include/simulated_annealing.hpp
  ../include/steep_ascent.hpp
+ ../include/stochastic.hpp
  /home/docker/Documents/tucil_dai/src/main.cpp
 CMakeFiles/cube.dir/src/open_gl_utils.cpp.o
  ../include/cube.hpp
@@ -23,7 +25,15 @@ CMakeFiles/cube.dir/src/side_ways.cpp.o
  ../include/cube.hpp
  ../include/side_ways.hpp
  /home/docker/Documents/tucil_dai/src/side_ways.cpp
+CMakeFiles/cube.dir/src/simulated_annealing.cpp.o
+ ../include/cube.hpp
+ ../include/simulated_annealing.hpp
+ /home/docker/Documents/tucil_dai/src/simulated_annealing.cpp
 CMakeFiles/cube.dir/src/steep_ascent.cpp.o
  ../include/cube.hpp
  ../include/steep_ascent.hpp
  /home/docker/Documents/tucil_dai/src/steep_ascent.cpp
+CMakeFiles/cube.dir/src/stochastic.cpp.o
+ ../include/cube.hpp
+ ../include/stochastic.hpp
+ /home/docker/Documents/tucil_dai/src/stochastic.cpp

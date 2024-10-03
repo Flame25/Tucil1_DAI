@@ -22,7 +22,6 @@ void open_gl_utils::init() {
   glEnable(GL_DEPTH_TEST);          // Enable depth testing
   std::unordered_set<int> existingValues;
   cube::initCube(existingValues); // Initialize the cube
-  cube::displayCube();
 }
 
 // Display function to render the cube
