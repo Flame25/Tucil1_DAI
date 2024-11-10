@@ -6,13 +6,15 @@
 namespace genetic_algorithm {
 struct individual {
   int cube[cube::N][cube::N][cube::N];
-  int fitness = 999;
+  double fitness = 999; //relative fitness
+  double probabilities = 0;
 };
 void work_func();
 
 void crossover(int cube1[cube::N][cube::N][cube::N],
                int cube2[cube::N][cube::N][cube::N],
-               int cube_target[cube::N][cube::N][cube::N]);
+               int cube_target1[cube::N][cube::N][cube::N],
+               int cube_target2[cube::N][cube::N][cube::N]);
 
 void cycleCrossoverWithMutation(int parent1[cube::N][cube::N][cube::N],
                                 int parent2[cube::N][cube::N][cube::N],
