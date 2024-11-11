@@ -1,29 +1,41 @@
-# Tugas Kecil Dasar AI
+# Tugas Besar Dasar AI
+
 Implementasi beberapa algoritma hill climbing & performance measuring dari algoritma tersebut
 
-## Notes 
+![Logo](images/cube.png) <br>
+Gambar Diagonal Magic Cube 5x5x5 <br>
+(Sumber : https://www.trump.de/magic-squares/magic-cubes/cubes-1.html)
+
+## Notes
+
 Build and tested in Ubuntu 20.04 via Docker from Arch Linux
 
-| Nama  | NIM |
-| ------------- | ------------- |
-| Christopher Richard Chandra  | 18222057  |
-| Josia Ryan Juliandy Silalahi | 18222075  |
+| Nama                         | NIM      |
+| ---------------------------- | -------- |
+| Anthony Bryant Gouw          | 18222033 |
+| Christopher Richard Chandra  | 18222057 |
+| Richie Leonardo              | 18222071 |
+| Josia Ryan Juliandy Silalahi | 18222075 |
 
 ## Proses Instalasi Pada Windows
 
-- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) ataupun [Docker CLI](https://docs.docker.com/get-started/get-docker/) 
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) ataupun [Docker CLI](https://docs.docker.com/get-started/get-docker/)
 - Download Dockerfile yang sudah disediakan
-- Install dan jalankan [X Server](https://sourceforge.net/projects/vcxsrv/) 
+- Install dan jalankan [X Server](https://sourceforge.net/projects/vcxsrv/)
 - Build images Docker yang sudah diinstall dengan menjalankan command pada direktori Dockerfile berada
+
 ```
-docker build -t ubuntu22 . 
+docker build -t ubuntu22 .
 ```
 
-- Buat docker container 
+- Buat docker container
+
 ```
 docker run -it --hostname docker --gpus all  --name Ubuntu22 ubuntu22 /bin/bash
 ```
+
 - Test GUI dengan menjalankan xeyes
+
 ```
 xeyes
 ```
@@ -44,21 +56,25 @@ cd build
 ```
 
 Clean existing build
+
 ```bash
-rm -rf * 
+rm -rf *
 ```
 
-Run CMake 
+Run CMake
+
 ```bash
 cmake ..
 ```
+
 Build the program
+
 ```bash
 make
 ```
+
 Run program
+
 ```bash
 ./cube
 ```
-
-
