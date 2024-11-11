@@ -7,16 +7,15 @@
 #include <vector>
 
 void steep_ascent::hill_climbing() {
-  int steps = 0;
   int count = 0;
 
-  if (std::remove("steepAscent.txt") == 0) {
+  if (std::remove("steepascent.txt") == 0) {
     std::cout << "steepAscent.txt was deleted successfully.\n";
   } else {
     std::cout << "steepAscent.txt did not exist or couldn't be deleted.\n";
   }
 
-  std::ofstream result("steepAscent.txt", std::ios::app);
+  std::ofstream result("steepascent.txt", std::ios::app);
   if (!result) {
     std::cerr << "Error opening steepAscent.txt for writing." << std::endl;
     return;
@@ -103,58 +102,5 @@ void steep_ascent::hill_climbing() {
       result.close();
       return;
     }
-
-    steps++;
   }
-}
-
-void steep_ascent::drawGraph() {
-
-  std::string filename = "steepAscent.txt";
-  std::ifstream file(filename);
-  if (!file.is_open()) {
-    std::cerr << "Error opening file!" << std::endl;
-    return;
-  }
-
-  int length;
-  std::vector<int> data;
-
-  // Read the first line for the length
-  std::string line;
-  if (std::getline(file, line)) {
-    length = std::stoi(line); // Convert the first line to an integer for length
-  }
-
-  // Read the next line(s) for the data
-  while (std::getline(file, line)) {
-    std::stringstream ss(line);
-    std::string value;
-
-    // Split by ';' and parse each value as integer
-    while (std::getline(ss, value, ';')) {
-      if (!value.empty()) {
-        data.push_back(std::stoi(value));
-      }
-    }
-  }
-
-  file.close();
-
-  // Verify if the number of data entries matches the length specified
-  if (data.size() != length) {
-    std::cerr << "Warning: Data size (" << data.size()
-              << ") does not match length (" << length << ")" << std::endl;
-  }
-
-  // Print the results
-  std::cout << "Length: " << length << std::endl;
-  std::cout << "Data: ";
-  for (int num : data) {
-    std::cout << num << " ";
-  }
-  std::cout << std::endl;
-
-  matplotlibcpp::plot(data);
-  matplotlibcpp::show();
 }

@@ -8,6 +8,31 @@ void random_restart::setRestartNum(int n) { random_restart::numOfRestart = n; }
 
 void random_restart::hill_climbing() {
 
+  int count = 0;
+  if (std::remove("randomrestart.txt") == 0) {
+    std::cout << "randomrestart.txt was deleted successfully.\n";
+  } else {
+    std::cout << "randomrestart.txt did not exist or couldn't be deleted.\n";
+  }
+
+  std::ofstream result("randomrestart.txt", std::ios::app);
+  if (!result) {
+    std::cerr << "Error opening randomrestart.txt for writing." << std::endl;
+    return;
+  }
+
+  if (std::remove("swap.txt") == 0) {
+    std::cout << "swap.txt was deleted successfully.\n";
+  } else {
+    std::cout << "swap.txt did not exist or couldn't be deleted.\n";
+  }
+
+  // Open swap.txt in append mode for writing scores
+  std::ofstream file("swap.txt", std::ios::app);
+  if (!file) {
+    std::cerr << "Error opening swap.txt for writing." << std::endl;
+    return;
+  }
   // Set restart to 2
   setRestartNum(2);
 
@@ -22,6 +47,14 @@ void random_restart::hill_climbing() {
       cube::errInfo targetVal;
 
       int currentErr = cube::objective_func();
+      count++;
+
+      if (!file) {
+        std::cerr << "Error opening file." << std::endl;
+        return;
+      }
+
+      file << currentErr << ";";
       // Loop trough all elements until finish condition satisfied
       for (int i = 0; i < cube::N; i++) {
         for (int j = 0; j < cube::N; j++) {
@@ -56,6 +89,27 @@ void random_restart::hill_climbing() {
         break;
       }
     }
+
+    file.close();
+
+    // Read the content from swap.txt and prepend a new line in
+    // randomrestart.txt
+    std::ifstream read_file("swap.txt");
+    if (!read_file) {
+      std::cerr << "Error opening swap.txt for reading." << std::endl;
+      return;
+    }
+
+    std::stringstream buffer;
+    buffer << read_file.rdbuf();
+
+    std::cout << "Hello : " << buffer.str() << std::endl;
+    read_file.close();
+
+    result << count << std::endl;
+    result << buffer.str();
+    result.close();
+
     // Find best Cube
     noteScore[r] = cube::objective_func();
     if (bestCubeErr > noteScore[r]) {

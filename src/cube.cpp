@@ -1,7 +1,9 @@
 #include "matplotlibcpp.h"
+#include <cctype>
 #include <climits>
 #include <cstdlib>
 #include <cube.hpp>
+#include <string>
 #include <vector>
 
 int cube::cube[cube::N][cube::N][cube::N]; // Definition and initialization
@@ -237,4 +239,57 @@ void cube::copyCube(int (*first)[5][5], int (*target)[5][5]) {
 void cube::restart_cube() {
   std::unordered_set<int> existingValues;
   cube::initCube(existingValues);
+}
+
+void cube::drawGraph(std::string name) {
+  std::string algoName = name;
+  transform(algoName.begin(), algoName.end(), algoName.begin(), ::tolower);
+  std::string filename = algoName + ".txt";
+  std::cout << algoName << std::endl;
+  std::ifstream file(filename);
+  if (!file.is_open()) {
+    std::cerr << "Error opening file!" << std::endl;
+    return;
+  }
+
+  int length;
+  std::vector<int> data;
+
+  // Read the first line for the length
+  std::string line;
+  if (std::getline(file, line)) {
+    length = std::stoi(line); // Convert the first line to an integer for length
+  }
+
+  // Read the next line(s) for the data
+  while (std::getline(file, line)) {
+    std::stringstream ss(line);
+    std::string value;
+
+    // Split by ';' and parse each value as integer
+    while (std::getline(ss, value, ';')) {
+      if (!value.empty()) {
+        data.push_back(std::stoi(value));
+      }
+    }
+  }
+
+  file.close();
+
+  // Verify if the number of data entries matches the length specified
+  if (data.size() != length) {
+    std::cerr << "Warning: Data size (" << data.size()
+              << ") does not match length (" << length << ")" << std::endl;
+  }
+
+  // Print the results
+  std::cout << "Length: " << length << std::endl;
+  std::cout << "Data: ";
+  for (int num : data) {
+    std::cout << num << " ";
+  }
+  std::cout << std::endl;
+  matplotlibcpp::plot(data);
+  matplotlibcpp::show();
+  matplotlibcpp::clf();
 }

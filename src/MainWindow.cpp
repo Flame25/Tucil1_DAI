@@ -6,7 +6,6 @@
 #include "GLWidget.h"
 #include "MainWindow.h"
 #include "cube.hpp"
-#include "steep_ascent.hpp"
 
 MainWindow::MainWindow() {
   centralWidget = new QWidget;
@@ -80,7 +79,21 @@ void MainWindow::about() {
 void MainWindow::runSteepestAsc() {
   steep_ascent::hill_climbing();
   glWidget->redrawGL();
-  steep_ascent::drawGraph();
+  cube::drawGraph("steepascent");
+  glWidget->redrawGL();
+}
+
+void MainWindow::runRandomRestart() {
+  random_restart::hill_climbing();
+  glWidget->redrawGL();
+  cube::drawGraph("randomrestart");
+  glWidget->redrawGL();
+}
+
+void MainWindow::runSideways() {
+  side_ways::hill_climbing();
+  glWidget->redrawGL();
+  cube::drawGraph("sideways");
   glWidget->redrawGL();
 }
 
@@ -106,6 +119,12 @@ void MainWindow::createActions() {
   runSteepest = new QAction(tr("&Steepest Ascent"), this);
   connect(runSteepest, SIGNAL(triggered()), this, SLOT(runSteepestAsc()));
 
+  runRandom = new QAction(tr("&Random Restart"), this);
+  connect(runRandom, SIGNAL(triggered()), this, SLOT(runRandomRestart()));
+
+  runSide = new QAction(tr("&Sideways"), this);
+  connect(runSide, SIGNAL(triggered()), this, SLOT(runSideways()));
+
   aboutAct = new QAction(tr("&About"), this);
   connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
@@ -117,10 +136,14 @@ void MainWindow::createMenus() {
   fileMenu = menuBar()->addMenu(tr("&File"));
   fileMenu->addAction(renderIntoPixmapAct);
   fileMenu->addAction(grabFrameBufferAct);
-  fileMenu->addAction(runSteepest);
   fileMenu->addAction(clearPixmapAct);
   fileMenu->addSeparator();
   fileMenu->addAction(exitAct);
+
+  algoMenu = menuBar()->addMenu(tr("&Algorithm"));
+  algoMenu->addAction(runSteepest);
+  algoMenu->addAction(runSide);
+  algoMenu->addAction(runRandom);
 
   helpMenu = menuBar()->addMenu(tr("&Help"));
   helpMenu->addAction(aboutAct);
