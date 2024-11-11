@@ -1,6 +1,6 @@
 # Tugas Besar Dasar AI
 
-Implementasi beberapa algoritma hill climbing & performance measuring dari algoritma tersebut
+Implementasi beberapa algoritma local search (Varian Hill Climbing, Simulated Annealing, dan Genetic Algorithm) & performance measuring dari algoritma tersebut untuk permasalahan diagonal magic cube 5x5x5
 
 <p align="center">
     <img src="images/cube.png" alt="Cube" width="300"/><br>
