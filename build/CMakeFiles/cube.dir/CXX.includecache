@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/cube.hpp
+climits
+-
+iostream
+-
+sstream
+-
+string
+-
+thread
+-
+unordered_set
+-
+vector
+-
+
+../include/stochastic.hpp
+cube.hpp
+-
+
+/home/docker/Documents/tucil_dai/src/stochastic.cpp
+cube.hpp
+/home/docker/Documents/tucil_dai/src/cube.hpp
+cstdlib
+-
+stochastic.hpp
+-
+
