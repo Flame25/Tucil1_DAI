@@ -25,6 +25,9 @@ void displayCube();
 // Initialize the cube with unique and random values (1 to N^5)
 void initCube(std::unordered_set<int> existingValues);
 
+std::vector<int> flatCube(int cube[cube::N][cube::N][cube::N]);
+void unflattenCube(std::vector<int> flat, int cube[cube::N][cube::N][cube::N]);
+
 // Cube Objective Function
 int objective_func();
 

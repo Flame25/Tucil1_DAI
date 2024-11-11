@@ -14,7 +14,7 @@ void work_func();
 void crossover(int cube1[cube::N][cube::N][cube::N],
                int cube2[cube::N][cube::N][cube::N],
                int cube_target1[cube::N][cube::N][cube::N],
-               int cube_target2[cube::N][cube::N][cube::N]);
+               int alloweValues[], int allowedSize);
 
 void cycleCrossoverWithMutation(int parent1[cube::N][cube::N][cube::N],
                                 int parent2[cube::N][cube::N][cube::N],

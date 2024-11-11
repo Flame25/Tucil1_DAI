@@ -1,4 +1,5 @@
 #include "cube.hpp"
+#include <iostream>
 #include <algorithm>
 #include <cstdlib>
 #include <genetic_algorithm.hpp>
@@ -7,7 +8,7 @@
 #include <random>
 #include <numeric>
 
-int population_num = 4;
+int population_num = 10;
 int N = 5;
 double MUTATION_PROB = 0.20;
 
@@ -15,32 +16,46 @@ double MUTATION_PROB = 0.20;
 void genetic_algorithm::crossover(int parent1[cube::N][cube::N][cube::N],
                                   int parent2[cube::N][cube::N][cube::N],
                                   int cube_target1[cube::N][cube::N][cube::N],
-                                  int cube_target2[cube::N][cube::N][cube::N]){
+                                  int allowedValues[], int allowedSize){
   std::vector<int> flatcube1;
   std::vector<int> flatcube2;
+  std::vector<int> child;
 
-  for (int i = 0; i < N; ++i){
-    for (int j = 0; j < N; ++j){
-      for (int k = 0; k < N; ++k){
-        flatcube1.push_back(parent1[i][j][k]);
-      }
-    }
+  flatcube1 = cube::flatCube(parent1);
+  flatcube2 = cube::flatCube(parent2);
+  child = flatcube1;
+
+  int size = flatcube1.size();
+  int start = rand() % size;
+  int end = rand() % size;
+
+  if (start > end) {
+      int temp = end;
+      end = start;
+      start = temp;
   }
 
-  for (int i = 0; i < N; ++i){
-    for (int j = 0; j < N; ++j){
-      for (int k = 0; k < N; ++k){
-        flatcube2.push_back(parent2[i][j][k]);
+  for (int i = start; i < end; ++i) {
+      int parent2_value = flatcube2[i];
+      int child_value = child[i];
+
+      if (parent2_value != child_value) {
+          auto it = std::find(child.begin(), child.end(), parent2_value);
+          if (it != child.end()) {
+              int index = std::distance(child.begin(), it);
+              child[index] = child_value;
+          }
+          child[i] = parent2_value;
       }
-    }
   }
-  
-  int length = flatcube1.size();
-  bool visited[cube::N] = {false};
-
-  
-
+  int cube1[cube::N][cube::N][cube::N];
+  // std::cout<<"unflattencube"<<std::endl;
+  cube::unflattenCube(child, cube1);
+  applyMutation(cube1, allowedValues, allowedSize);
+  // std::cout<<"copying cube"<<std::endl;
+  cube::copyCube(cube_target1, cube1);
 }
+
 // Function to perform Cycle Crossover on a 2D array (one layer of the 3D array)
 void genetic_algorithm::cycleCrossover2D(int parent1Layer[cube::N][cube::N],
                                          int parent2Layer[cube::N][cube::N],
@@ -49,31 +64,35 @@ void genetic_algorithm::cycleCrossover2D(int parent1Layer[cube::N][cube::N],
 
   // Cycle Crossover for 2D array
   for (int start = 0; start < N * N; ++start) {
-    std::cout<<"Masuk loop"<<std::endl;
+    // std::cout<<"Masuk loop"<<std::endl;
     int row = start / N;
     int col = start % N;
 
     if (!visited[row][col]) {
       int current = start;
+      int cycleLimit = N * N;
+      int cycleCount = 0;
       do {
+        
         row = current / N;
         col = current % N;
-
+        // std::cout<<"test"<<row<<col<<std::endl; //DEBUG
         // Copy element from parent1 to offspring
         offspringLayer[row][col] = parent1Layer[row][col];
         visited[row][col] = true;
 
         // Find the next element in the cycle (from parent2 to parent1)
         int nextElem = parent2Layer[row][col];
-
+        // std::cout<<"masuk"<<std::endl;
         // Search for the element in parent1
         bool found = false;
         for (int r = 0; r < N && !found; ++r) {
           for (int c = 0; c < N && !found; ++c) {
             if (parent1Layer[r][c] == nextElem) {
+              // std::cout<<r<<c<<N<<std::endl;
               current = r * N + c;
               found = true;
-              std::cout<<"selesailoop"<<std::endl;
+              // std::cout<<"selesailoop"<<std::endl;
             }
           }
         }
@@ -122,7 +141,7 @@ void genetic_algorithm::cycleCrossoverWithMutation(
     int allowedSize) {
   // Apply cycle crossover layer by layer (for each 2D array in the 3D cube)
   for (int i = 0; i < N; ++i) {
-    std::cout<<"masuk"<<i<<std::endl;
+    // std::cout<<"masuk"<<i<<std::endl;
     cycleCrossover2D(parent1[i], parent2[i], offspring[i]);
   }
 
@@ -147,12 +166,11 @@ void genetic_algorithm::work_func() {
     population.push_back(new_cube);
     cube::restart_cube();
   }
-  std::cout<<"init jalan"<<std::endl; //DEBUG
 
   // Start main looping
   // Do roullete n times, cross over
   for (int i = 0; i < 10000; i++) {
-    // Sort by fitness in descending order
+    // Sort by fitness in ascending order
     std::sort(population.begin(), population.end(), [](const genetic_algorithm::individual& a, const genetic_algorithm::individual& b) {
         return a.fitness > b.fitness;
     });
@@ -163,15 +181,10 @@ void genetic_algorithm::work_func() {
     for(int i = 0; i < population_num; i++){
       sum_score += population[i].fitness;
     }
-    std::cout<<"work1"<<std::endl; //DEBUG
-    std::cout<<sum_score<<std::endl;
+
 
     for(int i = 0; i < population_num; i++){
       probabilities[i] = population[i].fitness/(sum_score);
-    }
-    std::cout<<"work2"<<std::endl; //DEBUG
-    for(int i = 0; i < population_num; i++){
-      std::cout<<probabilities[i]<<std::endl;
     }
 
     double cummulative_prob = 0;
@@ -179,15 +192,10 @@ void genetic_algorithm::work_func() {
       cummulative_prob += probabilities[i];
       population[i].probabilities = cummulative_prob;
     }
-    std::cout<<"work3"<<std::endl; //DEBUG
-    for(int i = 0; i < population_num; i++){
-      std::cout<<population[i].probabilities<<std::endl;
+    
+    if (population[0].fitness <= 0) {
+      break;
     }
-    std::cout<<"uhuy"<<std::endl;
-    // int choosen_parent[population_num];
-    // for (int i = 0; i < population_num; i++) {
-    //   choosen_parent[i] = rand();
-    // }
 
     int allowedValues[N * N * N];
     for (int i = 0; i < N * N * N; ++i) {
@@ -197,12 +205,13 @@ void genetic_algorithm::work_func() {
 
     int firstparent = 0;
     int secondparent = 0;
-
+    bool foundfirst;
+    bool foundsecond;
+    
     for (int i = 0; i < population_num / 2; i++) {
-      bool foundfirst = false;
-      bool foundsecond = false;
+      foundfirst = false;
+      foundsecond = false;
       double r = ((double) rand() / (RAND_MAX)); //rand value (0,1)
-      std::cout<<r<<std::endl; //DEBUG
       for(int j = 0; j < population_num; j++){
         if(population[j].probabilities <= r && !foundfirst){ //if found lowerbound
           firstparent = j;
@@ -219,28 +228,36 @@ void genetic_algorithm::work_func() {
         }
       }
 
-      //TO DO
-      std::cout<<population[firstparent].cube<<std::endl;
-      std::cout<<population[secondparent].cube<<std::endl;
-      std::cout<<"startcrossover"<<std::endl; //DEBUG
       // Offspring array
-      int offspring[cube::N][cube::N][cube::N] = {{{0}}}; // Initialize with 0s
+      int offspring1[cube::N][cube::N][cube::N] = {{{0}}}; // Initialize with 0s
       // Perform cycle crossover with mutation
-      cycleCrossoverWithMutation(population[firstparent].cube,
-                                 population[secondparent].cube,
-                                 offspring, allowedValues, allowedSize);
+      // cycleCrossoverWithMutation(population[firstparent].cube,
+      //                            population[secondparent].cube,
+      //                            offspring1, allowedValues, allowedSize);
+      
+      firstparent = 0;
+      secondparent = 0;
+      crossover(population[firstparent].cube,
+                population[secondparent].cube,
+                offspring1, allowedValues, allowedSize);
       std::cout<<"crossover finish"<<std::endl; //DEBUG
-      int num = cube::objective_func(offspring); 
-      individual new_one;
-      new_one.fitness = 110 - num; //relative fitness
-      cube::copyCube(offspring, new_one.cube);
-      population.push_back(new_one);
+      int num1 = cube::objective_func(offspring1); //first cube
+      individual new_one1;
+      cube::copyCube(offspring1, new_one1.cube);
+      new_one1.fitness = 110 - num1; //relative fitness
+      population.push_back(new_one1);
+
+      // int num2 = cube::objective_func(offspring2); //second cube
+      // individual new_one2;
+      // new_one2.fitness = 110 - num2; //relative fitness
+      // cube::copyCube(offspring2, new_one2.cube);
+      // population.push_back(new_one2);
     }
 
     std::cout << "Generation: " << generation << "\t" << std::endl;
 
     generation++;
-    population_num = population.size(); //Update population size
+     //Update population size
   }
 
   individual smallestOne;
