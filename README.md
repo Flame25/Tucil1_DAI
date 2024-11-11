@@ -2,7 +2,9 @@
 
 Implementasi beberapa algoritma hill climbing & performance measuring dari algoritma tersebut
 
-![Logo](images/cube.png) <br>
+<p align="center">
+    <img src="images/cube.png" alt="Logo" width="300"/>
+</p><br>
 Gambar Diagonal Magic Cube 5x5x5 <br>
 (Sumber : https://www.trump.de/magic-squares/magic-cubes/cubes-1.html)
 
